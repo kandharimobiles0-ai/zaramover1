@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZARA MOVERS Abu Dhabi - Professional Relocation & Packing Services</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            yellow: '#FFC247',
+                            yellowDark: '#E0A328',
+                            navy: '#102B49',
+                            navyLight: '#1E3E62',
+                            cream: '#FFF8E8',
+                            accent: '#E65100'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 4s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-horizontal': 'bounceH 1.5s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        bounceH: {
+                            '0%, 100%': { transform: 'translateX(0)' },
+                            '50%': { transform: 'translateX(8px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FFC247;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #102B49;
+        }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass-panel {
+            background: rgba(16, 43, 73, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Particles Background Canvas */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Tilt effect perspective */
+        .tilt-card {
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+            transform-style: preserve-3d;
+        }
+
+        /* Reveal on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Customizer Drawer */
+        .customizer-drawer {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300 relative overflow-x-hidden">
+
+    <!-- Interactive Canvas Particles Background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div id="announcement-bar" class="bg-brand-navy text-white text-xs md:text-sm py-2 px-4 relative z-40 border-b border-brand-yellow/20">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
+            <div class="flex items-center gap-2">
+                <span class="bg-brand-yellow text-brand-navy font-bold px-2 py-0.5 rounded text-[10px] uppercase tracking-wider">PROMO</span>
+                <span id="editable-promo-text">Get 15% OFF Home Relocation in Abu Dhabi This Week! Use Code: <strong class="text-brand-yellow">ZARA2026</strong></span>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="tel:+971555609868" class="hover:text-brand-yellow transition-colors flex items-center gap-1.5 font-medium">
+                    <i class="fa-solid fa-phone text-brand-yellow"></i> <span class="site-phone">+971 55 560 9868</span>
+                </a>
+                <a href="mailto:zaramoovers1993@gmail.com" class="hover:text-brand-yellow transition-colors hidden sm:flex items-center gap-1.5">
+                    <i class="fa-solid fa-envelope text-brand-yellow"></i> <span class="site-email">zaramoovers1993@gmail.com</span>
+                </a>
+                <div class="flex items-center gap-2 border-l border-slate-700 pl-4">
+                    <button onclick="toggleDarkMode()" class="p-1 hover:text-brand-yellow transition-colors" title="Toggle Theme">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-brand-yellow"></i>
+                    </button>
+                    <button onclick="toggleCustomizer()" class="p-1 text-brand-yellow hover:rotate-90 transition-transform duration-300" title="Site Customizer Panel">
+                        <i class="fa-solid fa-palette"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER NAV -->
+    <header class="sticky top-0 z-30 glass-panel shadow-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- LOGO SECTION WITH BRANDING -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="relative w-12 h-12 rounded-xl bg-brand-yellow flex items-center justify-center p-1.5 shadow-md border border-brand-navy/10 group-hover:scale-105 transition-transform duration-300">
+                        <!-- Custom SVG Replica of Logo Graphic -->
+                        <svg viewBox="0 0 200 200" class="w-full h-full text-brand-navy fill-current">
+                            <path d="M100 20 C60 20 20 60 20 100 C20 130 40 155 70 170 C75 160 80 150 85 140 C65 130 50 110 50 90 C50 60 75 40 100 40 C125 40 150 60 150 90 C150 120 130 145 100 150 L100 180 C145 175 180 140 180 95 C180 50 145 20 100 20 Z" />
+                            <path d="M70 110 L100 80 L130 110 L130 150 L70 150 Z" fill="#102B49"/>
+                            <rect x="85" y="115" width="12" height="12" fill="#FFC247"/>
+                            <rect x="103" y="115" width="12" height="12" fill="#FFC247"/>
+                            <rect x="85" y="130" width="12" height="12" fill="#FFC247"/>
+                            <rect x="103" y="130" width="12" height="12" fill="#FFC247"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex items-center gap-1.5">
+                            <span class="font-extrabold text-xl md:text-2xl tracking-tight text-brand-navy dark:text-white leading-none site-brand-title">ZARA MOVERS</span>
+                            <span class="bg-brand-navy text-brand-yellow font-bold text-[10px] px-1.5 py-0.5 rounded tracking-widest">ABU DHABI</span>
+                        </div>
+                        <span class="text-[11px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider uppercase site-brand-tagline">PACKERS & MOVERS UAE</span>
+                    </div>
+                </a>
+
+                <!-- DESKTOP NAVIGATION -->
+                <nav class="hidden md:flex items-center space-x-8 font-semibold text-sm">
+                    <a href="#home" class="text-brand-navy dark:text-white hover:text-brand-yellow dark:hover:text-brand-yellow transition-colors">Home</a>
+                    <a href="#services" class="text-slate-600 dark:text-slate-300 hover:text-brand-navy dark:hover:text-brand-yellow transition-colors">Services</a>
+                    <a href="#calculator" class="text-slate-600 dark:text-slate-300 hover:text-brand-navy dark:hover:text-brand-yellow transition-colors flex items-center gap-1">
+                        <span>Cost Estimator</span>
+                        <span class="bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.2 rounded-full animate-pulse">Live</span>
+                    </a>
+                    <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-brand-navy dark:hover:text-brand-yellow transition-colors">About Us</a>
+                    <a href="#contact" class="text-slate-600 dark:text-slate-300 hover:text-brand-navy dark:hover:text-brand-yellow transition-colors">Contact</a>
+                    <button onclick="openAdminModal()" class="text-slate-500 dark:text-slate-400 hover:text-brand-navy dark:hover:text-white transition-colors" title="Admin Dashboard">
+                        <i class="fa-solid fa-user-gear text-lg"></i>
+                    </button>
+                </nav>
+
+                <!-- CALL TO ACTION BUTTON -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="https://wa.me/971555609868?text=Hello%20Zara%20Movers,%20I%20would%20like%20a%20free%20moving%20quote." target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2.5 rounded-xl font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-2 transform hover:-translate-y-0.5">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span class="btn-text-wa">WhatsApp Quick Quote</span>
+                    </a>
+                </div>
+
+                <!-- MOBILE MENU BUTTON -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- MOBILE NAV DROPDOWN -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-4 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" class="block py-2 font-semibold text-slate-800 dark:text-slate-200 hover:text-brand-yellow">Home</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block py-2 font-semibold text-slate-800 dark:text-slate-200 hover:text-brand-yellow">Services</a>
+            <a href="#calculator" onclick="toggleMobileMenu()" class="block py-2 font-semibold text-slate-800 dark:text-slate-200 hover:text-brand-yellow">Cost Estimator</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 font-semibold text-slate-800 dark:text-slate-200 hover:text-brand-yellow">About Us</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 font-semibold text-slate-800 dark:text-slate-200 hover:text-brand-yellow">Contact</a>
+            <button onclick="openAdminModal(); toggleMobileMenu();" class="block w-full text-left py-2 font-semibold text-slate-500 dark:text-slate-400">
+                <i class="fa-solid fa-lock mr-2"></i>Admin Portal
+            </button>
+            <div class="pt-2 flex flex-col gap-2">
+                <a href="tel:+971555609868" class="w-full text-center bg-brand-yellow text-brand-navy font-bold py-2.5 rounded-xl">
+                    <i class="fa-solid fa-phone mr-2"></i>Call +971 55 560 9868
+                </a>
+                <a href="https://wa.me/971555609868" class="w-full text-center bg-emerald-500 text-white font-bold py-2.5 rounded-xl">
+                    <i class="fa-brands fa-whatsapp mr-2"></i>WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative pt-8 pb-20 md:pt-16 md:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-brand-yellow/20 text-brand-navy dark:text-brand-yellow px-4 py-1.5 rounded-full font-bold text-xs md:text-sm border border-brand-yellow/30">
+                        <i class="fa-solid fa-shield-halved text-brand-yellow"></i>
+                        <span>#1 Rated Packers & Movers in Abu Dhabi</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy dark:text-white tracking-tight leading-none">
+                        Stress-Free <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-amber-500">Relocation</span> Services Across Abu Dhabi
+                    </h1>
+
+                    <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 font-normal max-w-2xl mx-auto lg:mx-0 leading-relaxed site-hero-description">
+                        Professional house, villa, and office moving with premium bubble wrapping, dismantle & assembly, and 100% safe transport guaranteed.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#calculator" class="w-full sm:w-auto bg-brand-yellow hover:bg-brand-yellowDark text-brand-navy font-extrabold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 text-center text-lg flex items-center justify-center gap-3">
+                            <span class="btn-text-calc">Calculate Moving Cost</span>
+                            <i class="fa-solid fa-arrow-right animate-bounce-horizontal"></i>
+                        </a>
+                        <a href="tel:+971555609868" class="w-full sm:w-auto bg-brand-navy dark:bg-slate-800 text-white font-bold px-8 py-4 rounded-xl shadow-md hover:bg-brand-navyLight transition-all text-center text-lg border border-slate-700 flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-phone text-brand-yellow"></i>
+                            <span class="site-phone">+971 55 560 9868</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="pt-8 border-t border-slate-200 dark:border-slate-800 grid grid-cols-3 gap-4 text-center lg:text-left">
+                        <div>
+                            <div class="text-2xl md:text-3xl font-black text-brand-navy dark:text-brand-yellow counter" data-target="15000">0</div>
+                            <div class="text-xs md:text-sm text-slate-500 font-medium">Successful Moves</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl md:text-3xl font-black text-brand-navy dark:text-brand-yellow counter" data-target="99">0</div>
+                            <div class="text-xs md:text-sm text-slate-500 font-medium">% On-Time Arrival</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl md:text-3xl font-black text-brand-navy dark:text-brand-yellow counter" data-target="25">0</div>
+                            <div class="text-xs md:text-sm text-slate-500 font-medium">Covered Trucks Fleet</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Graphic Box / Interactive Card -->
+                <div class="lg:col-span-5 relative">
+                    <div class="tilt-card bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl border-4 border-brand-yellow relative overflow-hidden">
+                        
+                        <div class="flex items-center justify-between pb-6 border-b border-slate-100 dark:border-slate-700">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-brand-yellow flex items-center justify-center text-brand-navy font-black text-xl">
+                                    ZM
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-brand-navy dark:text-white">Quick Moving Quote</h3>
+                                    <p class="text-xs text-slate-500">Get an instant estimation in 30s</p>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span> Available Today
+                            </span>
+                        </div>
+
+                        <!-- Hero Quick Form -->
+                        <form id="hero-quick-form" onsubmit="handleHeroSubmit(event)" class="space-y-4 mt-6">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">MOVING TYPE</label>
+                                <select id="hero-move-type" class="w-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl px-4 py-3 text-sm font-semibold focus:ring-2 focus:ring-brand-yellow outline-none">
+                                    <option value="Studio / 1 BHK Apartment">Studio / 1 BHK Apartment</option>
+                                    <option value="2 BHK / 3 BHK Apartment">2 BHK / 3 BHK Apartment</option>
+                                    <option value="Villa Relocation">Villa Relocation (3-6 Bedrooms)</option>
+                                    <option value="Commercial Office">Commercial / Office Moving</option>
+                                    <option value="Single Items / Furniture">Single Furniture Items / Box Packing</option>
+                                </select>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">PICKUP LOCATION</label>
+                                    <input type="text" id="hero-pickup" required placeholder="e.g., Al Reem Island" class="w-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-brand-yellow outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">DROP LOCATION</label>
+                                    <input type="text" id="hero-drop" required placeholder="e.g., MBZ City" class="w-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-brand-yellow outline-none">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">YOUR PHONE NUMBER</label>
+                                <input type="tel" id="hero-phone" required placeholder="+971 50 000 0000" class="w-full bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-brand-yellow outline-none">
+                            </div>
+
+                            <button type="submit" class="w-full bg-brand-navy hover:bg-brand-navyLight text-white font-bold py-3.5 rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane text-brand-yellow"></i>
+                                <span class="btn-text-hero">Request Free Quote Now</span>
+                            </button>
+                        </form>
+
+                        <!-- Contact Direct Banner -->
+                        <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700 text-center">
+                            <p class="text-xs text-slate-500">Or Call Direct Specialist:</p>
+                            <a href="tel:+971555609868" class="text-sm font-extrabold text-brand-navy dark:text-brand-yellow hover:underline flex items-center justify-center gap-2 mt-1">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="site-phone">+971 55 560 9868</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-20 bg-slate-100/70 dark:bg-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="bg-brand-yellow/30 text-brand-navy dark:text-brand-yellow font-bold text-xs uppercase px-3 py-1 rounded-full tracking-wider">Our Core Services</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-brand-navy dark:text-white">Complete Relocation Solutions in Abu Dhabi</h2>
+                <p class="text-slate-600 dark:text-slate-300 text-base">From full villa moving to professional box packing and furniture assembly, Zara Movers handles every detail with extreme care.</p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service 1 -->
+                <div class="tilt-card bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md hover:shadow-xl transition-all border border-slate-200/60 dark:border-slate-700 relative group overflow-hidden">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-yellow/20 text-brand-navy dark:text-brand-yellow flex items-center justify-center text-3xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-navy transition-colors duration-300">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy dark:text-white mb-3">Residential Moving</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                        Full-service apartment and villa moving. We pack your belongings using heavy-duty boxes, stretch film, and multi-layer bubble wrap.
+                    </p>
+                    <ul class="text-xs text-slate-500 dark:text-slate-400 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Furniture dismantling & reassembly</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Curtain & TV mounting assistance</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Covered enclosed trucks</li>
+                    </ul>
+                    <a href="#calculator" class="text-sm font-bold text-brand-navy dark:text-brand-yellow flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                        <span>Book Residential Move</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="tilt-card bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md hover:shadow-xl transition-all border border-slate-200/60 dark:border-slate-700 relative group overflow-hidden">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-yellow/20 text-brand-navy dark:text-brand-yellow flex items-center justify-center text-3xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-navy transition-colors duration-300">
+                        <i class="fa-solid fa-building-user"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy dark:text-white mb-3">Office & Commercial</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                        Fast weekend or overnight corporate relocation designed to minimize business downtime and protect IT infrastructure.
+                    </p>
+                    <ul class="text-xs text-slate-500 dark:text-slate-400 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Tagged desktop & server packing</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> File cabinet & workstation setup</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Building permit coordination</li>
+                    </ul>
+                    <a href="#calculator" class="text-sm font-bold text-brand-navy dark:text-brand-yellow flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                        <span>Get Commercial Quote</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="tilt-card bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md hover:shadow-xl transition-all border border-slate-200/60 dark:border-slate-700 relative group overflow-hidden">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-yellow/20 text-brand-navy dark:text-brand-yellow flex items-center justify-center text-3xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-navy transition-colors duration-300">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy dark:text-white mb-3">Packing & Unpacking</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                        Premium packing supplies including corrugated boxes, bubble wraps, blanket pads, and specialized wardrobe boxes.
+                    </p>
+                    <ul class="text-xs text-slate-500 dark:text-slate-400 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Fragile glassware & china wrapping</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Unpacking & shelf placement</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Eco-friendly box disposal</li>
+                    </ul>
+                    <a href="#calculator" class="text-sm font-bold text-brand-navy dark:text-brand-yellow flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                        <span>Order Packing Service</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="tilt-card bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md hover:shadow-xl transition-all border border-slate-200/60 dark:border-slate-700 relative group overflow-hidden">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-yellow/20 text-brand-navy dark:text-brand-yellow flex items-center justify-center text-3xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-navy transition-colors duration-300">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy dark:text-white mb-3">Furniture Assembly</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                        Expert carpenters for IKEA, Home Centre, and luxury custom furniture disassembly, re-fixing, and alignment.
+                    </p>
+                    <ul class="text-xs text-slate-500 dark:text-slate-400 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Skilled carpenters on-site</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Wall drilling & bracket mounting</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Hardware replacement</li>
+                    </ul>
+                    <a href="tel:+971555609868" class="text-sm font-bold text-brand-navy dark:text-brand-yellow flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                        <span>Call Carpenter Direct</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="tilt-card bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md hover:shadow-xl transition-all border border-slate-200/60 dark:border-slate-700 relative group overflow-hidden">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-yellow/20 text-brand-navy dark:text-brand-yellow flex items-center justify-center text-3xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-navy transition-colors duration-300">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy dark:text-white mb-3">Inter-Emirate Moving</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                        Seamless moving from Abu Dhabi to Dubai, Sharjah, Ajman, Al Ain, and Ras Al Khaimah with GPS-tracked trucks.
+                    </p>
+                    <ul class="text-xs text-slate-500 dark:text-slate-400 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Same-day long distance delivery</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Dedicated non-stop transport</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Transit insurance options</li>
+                    </ul>
+                    <a href="#calculator" class="text-sm font-bold text-brand-navy dark:text-brand-yellow flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                        <span>Inter-Emirate Quote</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="tilt-card bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-md hover:shadow-xl transition-all border border-slate-200/60 dark:border-slate-700 relative group overflow-hidden">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-yellow/20 text-brand-navy dark:text-brand-yellow flex items-center justify-center text-3xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-navy transition-colors duration-300">
+                        <i class="fa-solid fa-warehouse"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy dark:text-white mb-3">Secure Storage Units</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                        Short-term and long-term climate-controlled storage solutions in Abu Dhabi with 24/7 CCTV security monitoring.
+                    </p>
+                    <ul class="text-xs text-slate-500 dark:text-slate-400 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> AC Air-conditioned storage</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Pest-controlled clean space</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Flexible monthly contracts</li>
+                    </ul>
+                    <a href="tel:+971555609868" class="text-sm font-bold text-brand-navy dark:text-brand-yellow flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                        <span>Inquire Storage</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MULTI-STEP COST ESTIMATOR CALCULATOR SECTION -->
+    <section id="calculator" class="py-20 bg-white dark:bg-slate-900 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 space-y-3">
+                <span class="bg-brand-yellow/30 text-brand-navy dark:text-brand-yellow font-bold text-xs uppercase px-3 py-1 rounded-full">Interactive Price Calculator</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-brand-navy dark:text-white">Estimate Your Moving Cost Instantly</h2>
+                <p class="text-slate-600 dark:text-slate-300 text-sm">Select options below for an instant indicative quote in AED</p>
+            </div>
+
+            <!-- Calculator Wizard Box -->
+            <div class="bg-slate-50 dark:bg-slate-800 rounded-3xl p-6 md:p-10 shadow-xl border border-slate-200 dark:border-slate-700">
+                
+                <!-- Progress bar -->
+                <div class="mb-8">
+                    <div class="flex justify-between text-xs font-bold text-slate-500 mb-2">
+                        <span id="step-label">Step 1: Select Property Size</span>
+                        <span id="step-num">33% Completed</span>
+                    </div>
+                    <div class="w-full bg-slate-200 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+                        <div id="progress-bar" class="bg-brand-yellow h-full w-1/3 transition-all duration-300"></div>
+                    </div>
+                </div>
+
+                <form id="calc-form" onsubmit="submitCalculator(event)">
+                    
+                    <!-- STEP 1: PROPERTY TYPE -->
+                    <div id="calc-step-1" class="space-y-6">
+                        <h3 class="text-lg font-bold text-brand-navy dark:text-white">1. Select your property size:</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <label class="calc-option cursor-pointer block border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-4 text-center hover:border-brand-yellow transition-all">
+                                <input type="radio" name="calc_size" value="Studio" data-base="600" class="sr-only" checked onclick="selectCalcOption(this)">
+                                <i class="fa-solid fa-building text-2xl text-brand-yellow mb-2"></i>
+                                <div class="font-bold text-sm">Studio</div>
+                                <div class="text-xs text-slate-500">AED 600 - 800</div>
+                            </label>
+
+                            <label class="calc-option cursor-pointer block border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-4 text-center hover:border-brand-yellow transition-all">
+                                <input type="radio" name="calc_size" value="1 BHK" data-base="850" class="sr-only" onclick="selectCalcOption(this)">
+                                <i class="fa-solid fa-door-closed text-2xl text-brand-yellow mb-2"></i>
+                                <div class="font-bold text-sm">1 BHK Apt</div>
+                                <div class="text-xs text-slate-500">AED 850 - 1100</div>
+                            </label>
+
+                            <label class="calc-option cursor-pointer block border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-4 text-center hover:border-brand-yellow transition-all">
+                                <input type="radio" name="calc_size" value="2-3 BHK" data-base="1300" class="sr-only" onclick="selectCalcOption(this)">
+                                <i class="fa-solid fa-city text-2xl text-brand-yellow mb-2"></i>
+                                <div class="font-bold text-sm">2-3 BHK Apt</div>
+                                <div class="text-xs text-slate-500">AED 1300 - 1800</div>
+                            </label>
+
+                            <label class="calc-option cursor-pointer block border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-4 text-center hover:border-brand-yellow transition-all">
+                                <input type="radio" name="calc_size" value="Villa" data-base="2200" class="sr-only" onclick="selectCalcOption(this)">
+                                <i class="fa-solid fa-warehouse text-2xl text-brand-yellow mb-2"></i>
+                                <div class="font-bold text-sm">Villa (3-5 Bed)</div>
+                                <div class="text-xs text-slate-500">AED 2200+</div>
+                            </label>
+                        </div>
+
+                        <div class="flex justify-end pt-4">
+                            <button type="button" onclick="goToStep(2)" class="bg-brand-yellow text-brand-navy font-extrabold px-6 py-3 rounded-xl hover:bg-brand-yellowDark transition-all">
+                                Next Step <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: ADD-ONS & LOCATION -->
+                    <div id="calc-step-2" class="hidden space-y-6">
+                        <h3 class="text-lg font-bold text-brand-navy dark:text-white">2. Select Add-on Services:</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <label class="flex items-center gap-3 p-4 bg-white dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 cursor-pointer">
+                                <input type="checkbox" id="addon-bubble" value="150" class="w-5 h-5 text-brand-yellow rounded focus:ring-brand-yellow" onchange="recalculatePrice()">
+                                <div>
+                                    <div class="font-bold text-sm">Full Bubble Wrap</div>
+                                    <div class="text-xs text-slate-500">+ AED 150</div>
+                                </div>
+                            </label>
+
+                            <label class="flex items-center gap-3 p-4 bg-white dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 cursor-pointer">
+                                <input type="checkbox" id="addon-mount" value="100" class="w-5 h-5 text-brand-yellow rounded focus:ring-brand-yellow" onchange="recalculatePrice()">
+                                <div>
+                                    <div class="font-bold text-sm">TV/Curtain Mounting</div>
+                                    <div class="text-xs text-slate-500">+ AED 100</div>
+                                </div>
+                            </label>
+
+                            <label class="flex items-center gap-3 p-4 bg-white dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 cursor-pointer">
+                                <input type="checkbox" id="addon-interemirate" value="300" class="w-5 h-5 text-brand-yellow rounded focus:ring-brand-yellow" onchange="recalculatePrice()">
+                                <div>
+                                    <div class="font-bold text-sm">Other Emirate Travel</div>
+                                    <div class="text-xs text-slate-500">+ AED 300</div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold mb-1">Pickup Area (Abu Dhabi)</label>
+                                <input type="text" id="calc-pickup" required placeholder="e.g. Al Danah, Tourist Club" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 dark:bg-slate-700 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold mb-1">Destination Area</label>
+                                <input type="text" id="calc-drop" required placeholder="e.g. Mussafah, MBZ City" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 dark:bg-slate-700 text-sm">
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between pt-4">
+                            <button type="button" onclick="goToStep(1)" class="bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold px-6 py-3 rounded-xl">
+                                Back
+                            </button>
+                            <button type="button" onclick="goToStep(3)" class="bg-brand-yellow text-brand-navy font-extrabold px-6 py-3 rounded-xl hover:bg-brand-yellowDark">
+                                Next Step <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: CONTACT & SUMMARY -->
+                    <div id="calc-step-3" class="hidden space-y-6">
+                        <div class="bg-brand-yellow/15 border-2 border-brand-yellow rounded-2xl p-6 text-center">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Estimated Moving Cost</span>
+                            <div class="text-4xl md:text-5xl font-black text-brand-navy dark:text-brand-yellow my-2">
+                                <span id="calculated-price">AED 600 - 800</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Includes Truck, Drivers, Dismantling, Packing & Assembly</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold mb-1">Your Full Name</label>
+                                <input type="text" id="calc-name" required placeholder="John Doe" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 dark:bg-slate-700 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold mb-1">WhatsApp / Mobile Number</label>
+                                <input type="tel" id="calc-phone" required placeholder="+971 55 560 9868" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 dark:bg-slate-700 text-sm">
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between pt-4">
+                            <button type="button" onclick="goToStep(2)" class="bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold px-6 py-3 rounded-xl">
+                                Back
+                            </button>
+                            <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold px-8 py-3.5 rounded-xl shadow-lg transition-all flex items-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                                <span class="btn-text-confirm">Confirm Booking via WhatsApp</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- SMART PLANNING TOOL INVENTORY -->
+            <div class="mt-12 bg-slate-50 dark:bg-slate-800 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-700 shadow-md">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-200 dark:border-slate-700">
+                    <div>
+                        <span class="bg-brand-yellow/30 text-brand-navy dark:text-brand-yellow font-bold text-[10px] uppercase px-2.5 py-1 rounded-full">Smart Planning Tool</span>
+                        <h3 class="text-xl font-bold text-brand-navy dark:text-white mt-1">Furniture & Box Calculator</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Select items to estimate required truck capacity and packing box requirements</p>
+                    </div>
+                    <div id="truck-recommendation" class="bg-brand-navy text-brand-yellow text-xs font-bold px-4 py-2.5 rounded-xl shadow border border-brand-yellow/30 flex items-center gap-2">
+                        <i class="fa-solid fa-truck-moving text-base"></i>
+                        <span>Recommended Fleet: Standard 3-Ton Pickup Truck</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-center">
+                    <button onclick="toggleItemCount('kingBed', 1)" class="p-3 bg-white dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 hover:border-brand-yellow transition-all flex flex-col items-center">
+                        <i class="fa-solid fa-bed text-brand-yellow text-xl mb-1"></i>
+                        <span class="text-xs font-bold text-brand-navy dark:text-white">King Bed</span>
+                        <span id="cnt-kingBed" class="text-[10px] text-slate-500 font-semibold mt-1">Qty: 0</span>
+                    </button>
+
+                    <button onclick="toggleItemCount('sofaSet', 1)" class="p-3 bg-white dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 hover:border-brand-yellow transition-all flex flex-col items-center">
+                        <i class="fa-solid fa-couch text-brand-yellow text-xl mb-1"></i>
+                        <span class="text-xs font-bold text-brand-navy dark:text-white">Sofa Set</span>
+                        <span id="cnt-sofaSet" class="text-[10px] text-slate-500 font-semibold mt-1">Qty: 0</span>
+                    </button>
+
+                    <button onclick="toggleItemCount('fridge', 1)" class="p-3 bg-white dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 hover:border-brand-yellow transition-all flex flex-col items-center">
+                        <i class="fa-solid fa-square text-brand-yellow text-xl mb-1"></i>
+                        <span class="text-xs font-bold text-brand-navy dark:text-white">Refrigerator</span>
+                        <span id="cnt-fridge" class="text-[10px] text-slate-500 font-semibold mt-1">Qty: 0</span>
+                    </button>
+
+                    <button onclick="toggleItemCount('tvUnit', 1)" class="p-3 bg-white dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 hover:border-brand-yellow transition-all flex flex-col items-center">
+                        <i class="fa-solid fa-tv text-brand-yellow text-xl mb-1"></i>
+                        <span class="text-xs font-bold text-brand-navy dark:text-white">TV / Console</span>
+                        <span id="cnt-tvUnit" class="text-[10px] text-slate-500 font-semibold mt-1">Qty: 0</span>
+                    </button>
+
+                    <button onclick="toggleItemCount('dining', 1)" class="p-3 bg-white dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 hover:border-brand-yellow transition-all flex flex-col items-center">
+                        <i class="fa-solid fa-utensils text-brand-yellow text-xl mb-1"></i>
+                        <span class="text-xs font-bold text-brand-navy dark:text-white">Dining Table</span>
+                        <span id="cnt-dining" class="text-[10px] text-slate-500 font-semibold mt-1">Qty: 0</span>
+                    </button>
+
+                    <button onclick="toggleItemCount('boxes', 5)" class="p-3 bg-white dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 hover:border-brand-yellow transition-all flex flex-col items-center">
+                        <i class="fa-solid fa-boxes-packing text-brand-yellow text-xl mb-1"></i>
+                        <span class="text-xs font-bold text-brand-navy dark:text-white">Carton Boxes</span>
+                        <span id="cnt-boxes" class="text-[10px] text-slate-500 font-semibold mt-1">Qty: 0</span>
+                    </button>
+                </div>
+
+                <div class="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs bg-white dark:bg-slate-700 p-3 rounded-xl border border-slate-200 dark:border-slate-600">
+                    <div class="flex items-center gap-4">
+                        <span class="text-slate-500">Estimated Total Volume: <strong id="total-vol" class="text-brand-navy dark:text-white">0 CBM</strong></span>
+                        <span class="text-slate-500">Suggested Boxes Needed: <strong id="suggested-boxes" class="text-brand-navy dark:text-white">0 Boxes</strong></span>
+                    </div>
+                    <button onclick="resetInventory()" class="text-red-500 hover:underline font-bold text-[11px]">Clear Inventory</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION & COVERAGE AREA -->
+    <section id="about" class="py-20 bg-slate-100/70 dark:bg-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="space-y-6">
+                    <span class="bg-brand-yellow/30 text-brand-navy dark:text-brand-yellow font-bold text-xs uppercase px-3 py-1 rounded-full">About Zara Movers</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-navy dark:text-white leading-tight">
+                        Abu Dhabi's Most Reliable Relocation Partner Since 1993
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Zara Movers Abu Dhabi provides end-to-end relocation services across the UAE. We own a modern fleet of enclosed moving trucks and employ trained professional packers and carpenters dedicated to protecting your valuable furniture.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600">
+                            <i class="fa-solid fa-box-archive text-2xl text-brand-yellow mb-2"></i>
+                            <h4 class="font-bold text-sm text-brand-navy dark:text-white">Bubble & Stretch Wrap</h4>
+                            <p class="text-xs text-slate-500">Multi-layer defense against scratches</p>
+                        </div>
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600">
+                            <i class="fa-solid fa-screwdriver text-2xl text-brand-yellow mb-2"></i>
+                            <h4 class="font-bold text-sm text-brand-navy dark:text-white">Expert Assembly</h4>
+                            <p class="text-xs text-slate-500">Master carpenters for every job</p>
+                        </div>
+                    </div>
+
+                    <!-- Direct Contact Badge -->
+                    <div class="p-4 bg-brand-navy text-white rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-yellow text-brand-navy flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-300">24/7 Hotline Support</div>
+                                <div class="font-bold text-sm site-phone">+971 55 560 9868</div>
+                            </div>
+                        </div>
+                        <a href="mailto:zaramoovers1993@gmail.com" class="bg-brand-yellow text-brand-navy font-bold px-4 py-2 rounded-xl text-xs hover:bg-white transition-colors">
+                            Send Email
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coverage Map Simulation & Updated Location -->
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-xl border border-slate-200 dark:border-slate-700 space-y-4">
+                    <h3 class="font-bold text-lg text-brand-navy dark:text-white flex items-center justify-between">
+                        <span>Abu Dhabi Headquarters</span>
+                        <span class="text-xs text-emerald-500 font-normal"><i class="fa-solid fa-circle text-[8px] mr-1"></i> Main Hub</span>
+                    </h3>
+
+                    <!-- Updated Location Address Box -->
+                    <div class="p-4 bg-brand-yellow/15 border border-brand-yellow/50 rounded-2xl flex items-start gap-3">
+                        <i class="fa-solid fa-location-dot text-brand-navy dark:text-brand-yellow text-xl mt-0.5"></i>
+                        <div>
+                            <div class="text-xs font-bold text-slate-500 uppercase tracking-wider">Primary Location Address:</div>
+                            <div class="text-sm font-extrabold text-brand-navy dark:text-white site-location-str">
+                                9GFQ+68 - Mohamed Bin Zayed City - Z9 01 - Abu Dhabi - United Arab Emirates
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div class="p-3 bg-slate-50 dark:bg-slate-700 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-building text-brand-yellow"></i> Mohamed Bin Zayed City (MBZ)
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-slate-700 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-yellow"></i> Al Reem Island
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-slate-700 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-yellow"></i> Khalifa City
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-slate-700 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-yellow"></i> Mussafah Industrial Area
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-slate-700 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-yellow"></i> Yas & Saadiyat Island
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-slate-700 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-yellow"></i> Al Ain & Western Region
+                        </div>
+                    </div>
+
+                    <!-- Interactive Map Card Graphic -->
+                    <div class="relative h-48 bg-slate-200 dark:bg-slate-700 rounded-2xl overflow-hidden flex items-center justify-center border border-slate-300 dark:border-slate-600">
+                        <div class="absolute inset-0 opacity-30 bg-[radial-gradient(#102B49_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                        <div class="relative z-10 text-center p-4">
+                            <i class="fa-solid fa-map-location-dot text-4xl text-brand-navy dark:text-brand-yellow mb-2 animate-bounce"></i>
+                            <p class="font-bold text-sm text-brand-navy dark:text-white">Prompt 30-Minute Dispatch Across MBZ & Abu Dhabi</p>
+                            <p class="text-xs text-slate-500">Contact us now for immediate truck dispatch</p>
+                        </div>
+                    </div>
+
+                    <!-- LIVE MOVING TRUCK / DISPATCH TRACKING SIMULATOR -->
+                    <div class="pt-4 border-t border-slate-200 dark:border-slate-700">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold text-brand-navy dark:text-white flex items-center gap-1.5">
+                                <i class="fa-solid fa-satellite-dish text-emerald-500 animate-pulse"></i> Live Move Dispatch Tracking
+                            </span>
+                            <span class="text-[10px] text-slate-400">Demo Code: <code class="text-brand-yellow font-mono">ZM-9868</code></span>
+                        </div>
+
+                        <div class="flex gap-2">
+                            <input type="text" id="track-input" placeholder="Enter Order ID (e.g. ZM-9868)" value="ZM-9868" class="flex-1 p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 dark:bg-slate-700 text-xs outline-none">
+                            <button onclick="trackMoveOrder()" class="bg-brand-navy text-brand-yellow font-bold px-4 py-2.5 rounded-xl text-xs hover:bg-brand-navyLight">Track</button>
+                        </div>
+
+                        <div id="track-result" class="hidden mt-3 p-3 bg-emerald-50 dark:bg-slate-700/80 rounded-xl border border-emerald-200 dark:border-slate-600 text-xs space-y-1.5">
+                            <div class="flex justify-between font-bold text-emerald-800 dark:text-emerald-400">
+                                <span>Status: Truck Dispatched</span>
+                                <span>ETA: 18 mins</span>
+                            </div>
+                            <div class="text-slate-600 dark:text-slate-300">Driver: Mohammed Ali (3-Ton Enclosed Box Truck)</div>
+                            <div class="text-[10px] text-slate-400">Current Location: Mohamed Bin Zayed City Z9 01</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FREQUENTLY ASKED QUESTIONS (FAQ) -->
+    <section class="py-20 bg-white dark:bg-slate-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="bg-brand-yellow/30 text-brand-navy dark:text-brand-yellow font-bold text-xs uppercase px-3 py-1 rounded-full">Got Questions?</span>
+                <h2 class="text-3xl font-extrabold text-brand-navy dark:text-white mt-2">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4" id="faq-accordion">
+                
+                <div class="border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-bold text-brand-navy dark:text-white flex justify-between items-center bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 transition-colors">
+                        <span>How much does moving cost in Abu Dhabi?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden p-5 text-sm text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700">
+                        Moving costs start from AED 600 for studio apartments and AED 850 for 1 BHK apartments. The total price depends on the quantity of furniture, distance, packing materials, and handyman services required.
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-bold text-brand-navy dark:text-white flex justify-between items-center bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 transition-colors">
+                        <span>Do you provide packing boxes and bubble wrap?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden p-5 text-sm text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700">
+                        Yes! We supply heavy-duty corrugated boxes, bubble wrapping, stretch film, adhesive tape, and blankets to safeguard all furniture and fragile household items.
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-bold text-brand-navy dark:text-white flex justify-between items-center bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 transition-colors">
+                        <span>How far in advance should I book my move?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden p-5 text-sm text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700">
+                        We recommend booking 2 to 3 days in advance. However, we also cater to urgent same-day moving requests across Abu Dhabi subject to truck availability.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & DIRECT INQUIRY SECTION -->
+    <section id="contact" class="py-20 bg-slate-100/70 dark:bg-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Details -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="bg-brand-yellow/30 text-brand-navy dark:text-brand-yellow font-bold text-xs uppercase px-3 py-1 rounded-full">Get In Touch</span>
+                    <h2 class="text-3xl font-extrabold text-brand-navy dark:text-white">Contact Zara Movers Directly</h2>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm">Have questions or want to confirm a customized moving schedule? Reach out to our 24/7 support line.</p>
+
+                    <div class="space-y-4">
+                        <a href="tel:+971555609868" class="flex items-center gap-4 p-4 bg-white dark:bg-slate-700 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                            <div class="w-12 h-12 rounded-xl bg-brand-yellow/20 text-brand-navy dark:text-brand-yellow flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500">Phone / Call Direct</div>
+                                <div class="font-extrabold text-brand-navy dark:text-white site-phone">+971 55 560 9868</div>
+                            </div>
+                        </a>
+
+                        <a href="https://wa.me/971555609868" target="_blank" class="flex items-center gap-4 p-4 bg-white dark:bg-slate-700 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500">WhatsApp 24/7 Chat</div>
+                                <div class="font-extrabold text-brand-navy dark:text-white site-phone">+971 55 560 9868</div>
+                            </div>
+                        </a>
+
+                        <a href="mailto:zaramoovers1993@gmail.com" class="flex items-center gap-4 p-4 bg-white dark:bg-slate-700 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                            <div class="w-12 h-12 rounded-xl bg-brand-yellow/20 text-brand-navy dark:text-brand-yellow flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500">Official Email</div>
+                                <div class="font-extrabold text-brand-navy dark:text-white site-email">zaramoovers1993@gmail.com</div>
+                            </div>
+                        </a>
+
+                        <div class="flex items-center gap-4 p-4 bg-white dark:bg-slate-700 rounded-2xl shadow-sm">
+                            <div class="w-12 h-12 rounded-xl bg-brand-yellow/20 text-brand-navy dark:text-brand-yellow flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500">Head Office Location</div>
+                                <div class="font-extrabold text-brand-navy dark:text-white text-xs md:text-sm site-location-str">
+                                    9GFQ+68 - Mohamed Bin Zayed City - Z9 01 - Abu Dhabi - United Arab Emirates
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form (Auto Email Integration) -->
+                <div class="lg:col-span-7 bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-200 dark:border-slate-700">
+                    <h3 class="text-xl font-bold text-brand-navy dark:text-white mb-6">Send an Online Inquiry</h3>
+                    
+                    <form id="contact-page-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold mb-1">Full Name</label>
+                                <input type="text" id="contact-name" required placeholder="Your Name" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 dark:bg-slate-700 text-sm outline-none focus:ring-2 focus:ring-brand-yellow">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold mb-1">Phone Number</label>
+                                <input type="tel" id="contact-phone" required placeholder="+971 55 560 9868" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 dark:bg-slate-700 text-sm outline-none focus:ring-2 focus:ring-brand-yellow">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold mb-1">Email Address</label>
+                            <input type="email" id="contact-email" placeholder="name@example.com" class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 dark:bg-slate-700 text-sm outline-none focus:ring-2 focus:ring-brand-yellow">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold mb-1">Move Details / Special Requirements</label>
+                            <textarea id="contact-message" rows="4" required placeholder="Tell us about your moving date, locations, and items..." class="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-600 dark:bg-slate-700 text-sm outline-none focus:ring-2 focus:ring-brand-yellow"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-navy hover:bg-brand-navyLight text-white font-extrabold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane text-brand-yellow"></i>
+                            <span class="btn-text-submit">Submit Direct Inquiry</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-navy text-white pt-16 pb-12 border-t-4 border-brand-yellow relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-700">
+                
+                <!-- Col 1 -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-yellow flex items-center justify-center text-brand-navy font-extrabold">
+                            ZM
+                        </div>
+                        <span class="font-extrabold text-xl tracking-tight site-brand-title">ZARA MOVERS</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Abu Dhabi's trusted packers and movers. Delivering reliable home, villa, and office relocation across all Emirates since 1993.
+                    </p>
+                    <div class="flex space-x-3 pt-2">
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-brand-yellow hover:bg-brand-yellow hover:text-brand-navy transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-brand-yellow hover:bg-brand-yellow hover:text-brand-navy transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/971555609868" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-brand-yellow hover:bg-brand-yellow hover:text-brand-navy transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-bold text-sm text-brand-yellow uppercase tracking-wider mb-4">Moving Services</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><a href="#services" class="hover:text-brand-yellow transition-colors">House & Villa Relocation</a></li>
+                        <li><a href="#services" class="hover:text-brand-yellow transition-colors">Office & Corporate Moving</a></li>
+                        <li><a href="#services" class="hover:text-brand-yellow transition-colors">Furniture Dismantle & Assembly</a></li>
+                        <li><a href="#services" class="hover:text-brand-yellow transition-colors">Bubble Wrap & Box Packing</a></li>
+                        <li><a href="#services" class="hover:text-brand-yellow transition-colors">Storage & Warehousing</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-bold text-sm text-brand-yellow uppercase tracking-wider mb-4">Quick Links</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><a href="#home" class="hover:text-brand-yellow transition-colors">Home Page</a></li>
+                        <li><a href="#calculator" class="hover:text-brand-yellow transition-colors">Instant Cost Estimator</a></li>
+                        <li><a href="#about" class="hover:text-brand-yellow transition-colors">Abu Dhabi Coverage Areas</a></li>
+                        <li><a href="#contact" class="hover:text-brand-yellow transition-colors">Contact Support</a></li>
+                        <li><button onclick="openAdminModal()" class="hover:text-brand-yellow transition-colors">Staff Login</button></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 Contact Details -->
+                <div class="space-y-3">
+                    <h4 class="font-bold text-sm text-brand-yellow uppercase tracking-wider mb-4">Direct Contact</h4>
+                    <div class="text-xs text-slate-300 space-y-2">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-brand-yellow"></i>
+                            <a href="tel:+971555609868" class="hover:underline site-phone">+971 55 560 9868</a>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-brand-yellow"></i>
+                            <a href="mailto:zaramoovers1993@gmail.com" class="hover:underline site-email">zaramoovers1993@gmail.com</a>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-yellow mt-0.5"></i>
+                            <span class="site-location-str">9GFQ+68 - Mohamed Bin Zayed City - Z9 01 - Abu Dhabi - United Arab Emirates</span>
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <a href="https://wa.me/971555609868" target="_blank" class="block w-full text-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-xs transition-colors">
+                            <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp Instant
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400 gap-4">
+                <div>
+                    &copy; 2026 ZARA MOVERS Abu Dhabi. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <a href="#" class="hover:underline">Terms of Service</a>
+                    <a href="#" class="hover:underline">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING ACTION QUICK DOCK -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+        <a href="tel:+971555609868" class="w-12 h-12 bg-brand-navy text-brand-yellow rounded-full shadow-2xl flex items-center justify-center text-xl hover:scale-110 transition-transform border-2 border-brand-yellow" title="Call Direct">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+        <a href="https://wa.me/971555609868?text=Hello%20Zara%20Movers,%20I%20want%20to%20inquire%20about%20relocation%20services." target="_blank" class="w-14 h-14 bg-emerald-500 text-white rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition-transform animate-pulse" title="WhatsApp Us">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- SITE CUSTOMIZER SLIDE-OVER PANEL WITH BUTTON RENAME CONTROLS -->
+    <div id="customizer-panel" class="customizer-drawer fixed inset-y-0 right-0 w-80 md:w-96 bg-white dark:bg-slate-800 shadow-2xl z-50 transform translate-x-full border-l border-slate-200 dark:border-slate-700 p-6 overflow-y-auto">
+        <div class="flex justify-between items-center pb-4 border-b border-slate-200 dark:border-slate-700 mb-6">
+            <h3 class="font-bold text-lg text-brand-navy dark:text-white flex items-center gap-2">
+                <i class="fa-solid fa-sliders text-brand-yellow"></i> Live Site Customizer
+            </h3>
+            <button onclick="toggleCustomizer()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+        <div class="space-y-6 text-sm">
+            <!-- RENAME ALL BUTTONS CONTROLS -->
+            <div class="space-y-3 p-3 bg-brand-yellow/10 rounded-2xl border border-brand-yellow/40">
+                <h4 class="font-bold text-xs uppercase text-brand-navy dark:text-brand-yellow tracking-wider flex items-center gap-1.5">
+                    <i class="fa-solid fa-pen-to-square"></i> Rename Site Buttons
+                </h4>
+                <div>
+                    <label class="block text-[11px] font-semibold mb-1">1. Hero Main CTA Button</label>
+                    <input type="text" id="btn-rename-calc" value="Calculate Moving Cost" oninput="renameButtons('.btn-text-calc', this.value)" class="w-full p-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700 text-xs">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-semibold mb-1">2. Quick Quote Submit Button</label>
+                    <input type="text" id="btn-rename-hero" value="Request Free Quote Now" oninput="renameButtons('.btn-text-hero', this.value)" class="w-full p-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700 text-xs">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-semibold mb-1">3. WhatsApp Quick Button</label>
+                    <input type="text" id="btn-rename-wa" value="WhatsApp Quick Quote" oninput="renameButtons('.btn-text-wa', this.value)" class="w-full p-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700 text-xs">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-semibold mb-1">4. Calculator Final Booking Button</label>
+                    <input type="text" id="btn-rename-confirm" value="Confirm Booking via WhatsApp" oninput="renameButtons('.btn-text-confirm', this.value)" class="w-full p-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700 text-xs">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-semibold mb-1">5. Contact Direct Submit Button</label>
+                    <input type="text" id="btn-rename-submit" value="Submit Direct Inquiry" oninput="renameButtons('.btn-text-submit', this.value)" class="w-full p-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700 text-xs">
+                </div>
+            </div>
+
+            <!-- EDIT CONTACT DETAILS LIVE -->
+            <div class="space-y-3">
+                <h4 class="font-bold text-xs uppercase text-slate-400 tracking-wider">Live Content Editing</h4>
+                <div>
+                    <label class="block text-xs font-semibold mb-1">Company Phone Number</label>
+                    <input type="text" id="cust-phone" value="+971 55 560 9868" oninput="updateLivePhone(this.value)" class="w-full p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700 text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold mb-1">Company Email</label>
+                    <input type="email" id="cust-email" value="zaramoovers1993@gmail.com" oninput="updateLiveEmail(this.value)" class="w-full p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700 text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold mb-1">Promo Bar Announcement</label>
+                    <input type="text" id="cust-promo" value="Get 15% OFF Home Relocation in Abu Dhabi This Week! Code: ZARA2026" oninput="updateLivePromo(this.value)" class="w-full p-2.5 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-700 text-xs">
+                </div>
+            </div>
+
+            <!-- THEME COLORS -->
+            <div class="space-y-3 pt-4 border-t border-slate-200 dark:border-slate-700">
+                <h4 class="font-bold text-xs uppercase text-slate-400 tracking-wider">Accent Theme Color</h4>
+                <div class="grid grid-cols-4 gap-2">
+                    <button onclick="setThemeColor('#FFC247')" class="h-10 rounded-lg bg-[#FFC247] border-2 border-slate-300" title="Golden Yellow"></button>
+                    <button onclick="setThemeColor('#10B981')" class="h-10 rounded-lg bg-[#10B981] border-2 border-slate-300" title="Emerald"></button>
+                    <button onclick="setThemeColor('#3B82F6')" class="h-10 rounded-lg bg-[#3B82F6] border-2 border-slate-300" title="Royal Blue"></button>
+                    <button onclick="setThemeColor('#F97316')" class="h-10 rounded-lg bg-[#F97316] border-2 border-slate-300" title="Orange"></button>
+                </div>
+            </div>
+
+            <!-- TOGGLES -->
+            <div class="space-y-3 pt-4 border-t border-slate-200 dark:border-slate-700">
+                <h4 class="font-bold text-xs uppercase text-slate-400 tracking-wider">Visual Effects</h4>
+                <label class="flex justify-between items-center cursor-pointer">
+                    <span class="text-xs font-semibold">Background Canvas Particles</span>
+                    <input type="checkbox" id="toggle-particles" checked onchange="toggleParticlesFX(this.checked)" class="w-4 h-4 accent-brand-yellow">
+                </label>
+                <label class="flex justify-between items-center cursor-pointer">
+                    <span class="text-xs font-semibold">Card 3D Tilt Animations</span>
+                    <input type="checkbox" id="toggle-tilt" checked class="w-4 h-4 accent-brand-yellow">
+                </label>
+            </div>
+
+            <div class="pt-6 border-t border-slate-200 dark:border-slate-700 space-y-2">
+                <button onclick="resetCustomizer()" class="w-full bg-slate-200 dark:bg-slate-700 font-bold py-2.5 rounded-xl text-xs">
+                    Reset To Default Branding
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN LOGIN / DASHBOARD MODAL -->
+    <div id="admin-modal" class="fixed inset-0 bg-brand-navy/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-2xl w-full p-6 md:p-8 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white">
+                <i class="fa-solid fa-xmark text-2xl"></i>
+            </button>
+
+            <!-- LOGIN VIEW -->
+            <div id="admin-login-view" class="space-y-6 text-center">
+                <div class="w-16 h-16 rounded-2xl bg-brand-yellow text-brand-navy flex items-center justify-center font-black text-2xl mx-auto shadow-md">
+                    ZM
+                </div>
+                <div>
+                    <h3 class="text-2xl font-extrabold text-brand-navy dark:text-white">Zara Movers Admin Portal</h3>
+                    <p class="text-xs text-slate-500 mt-1">Default Password: <code class="bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded text-brand-navy dark:text-brand-yellow">zaramovers123</code></p>
+                </div>
+
+                <form onsubmit="handleAdminLogin(event)" class="space-y-4 max-w-sm mx-auto">
+                    <input type="password" id="admin-pass" required placeholder="Enter Access Password" class="w-full p-3 rounded-xl border border-slate-300 dark:border-slate-600 dark:bg-slate-700 text-sm outline-none text-center font-bold">
+                    <button type="submit" class="w-full bg-brand-navy hover:bg-brand-navyLight text-white font-extrabold py-3.5 rounded-xl shadow-md transition-all">
+                        Unlock Admin Leads
+                    </button>
+                </form>
+            </div>
+
+            <!-- DASHBOARD VIEW -->
+            <div id="admin-dashboard-view" class="hidden space-y-6">
+                <div class="flex justify-between items-center pb-4 border-b border-slate-200 dark:border-slate-700">
+                    <div>
+                        <h3 class="text-xl font-bold text-brand-navy dark:text-white">Inquiries & Leads Dashboard</h3>
+                        <p class="text-xs text-slate-500">Live captured moving requests</p>
+                    </div>
+                    <button onclick="logoutAdmin()" class="text-xs font-bold text-red-500 hover:underline">Logout</button>
+                </div>
+
+                <div class="max-h-80 overflow-y-auto space-y-3" id="admin-leads-container">
+                    <div class="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl border border-slate-200 dark:border-slate-600 text-xs space-y-1">
+                        <div class="flex justify-between font-bold text-brand-navy dark:text-white">
+                            <span>2 BHK Move: Al Reem -> MBZ City</span>
+                            <span class="text-emerald-500">AED 1,300</span>
+                        </div>
+                        <div class="text-slate-500">Customer: Ahmed Al Mansoori (+971 50 123 4567)</div>
+                        <div class="text-[10px] text-slate-400">Received 10 mins ago via Cost Calculator</div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-slate-200 dark:border-slate-700 flex justify-between items-center text-xs">
+                    <button onclick="clearLeads()" class="text-red-500 hover:underline">Clear Lead History</button>
+                    <span class="text-slate-400">Auto-saved to session memory</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Global variables & state
+        let currentCalcStep = 1;
+        let basePrice = 600;
+        let leads = [];
+
+        // Dynamic Button Renamer
+        function renameButtons(selector, newText) {
+            document.querySelectorAll(selector).forEach(el => {
+                el.innerText = newText;
+            });
+        }
+
+        // Inventory Calculator State
+        const itemsState = {
+            kingBed: 0,
+            sofaSet: 0,
+            fridge: 0,
+            tvUnit: 0,
+            dining: 0,
+            boxes: 0
+        };
+
+        function toggleItemCount(item, step) {
+            itemsState[item] += step;
+            document.getElementById(`cnt-${item}`).innerText = `Qty: ${itemsState[item]}`;
+
+            // Calculate Volume (approx CBM)
+            const totalCbm = (itemsState.kingBed * 2.5) + (itemsState.sofaSet * 3.0) + (itemsState.fridge * 1.2) + (itemsState.tvUnit * 0.8) + (itemsState.dining * 1.5) + (itemsState.boxes * 0.1);
+            
+            document.getElementById('total-vol').innerText = `${totalCbm.toFixed(1)} CBM`;
+            document.getElementById('suggested-boxes').innerText = `${Math.ceil(itemsState.boxes + (totalCbm * 3))} Boxes`;
+
+            // Truck Fleet Recommendation logic
+            const truckEl = document.getElementById('truck-recommendation');
+            if (totalCbm > 18) {
+                truckEl.innerHTML = `<i class="fa-solid fa-truck-moving text-base"></i><span>Recommended Fleet: Heavy 7-Ton Long Truck / 2 Vehicles</span>`;
+            } else if (totalCbm > 8) {
+                truckEl.innerHTML = `<i class="fa-solid fa-truck-moving text-base"></i><span>Recommended Fleet: Large 5-Ton Covered Box Truck</span>`;
+            } else {
+                truckEl.innerHTML = `<i class="fa-solid fa-truck-moving text-base"></i><span>Recommended Fleet: Standard 3-Ton Pickup Truck</span>`;
+            }
+        }
+
+        function resetInventory() {
+            Object.keys(itemsState).forEach(key => {
+                itemsState[key] = 0;
+                const el = document.getElementById(`cnt-${key}`);
+                if (el) el.innerText = 'Qty: 0';
+            });
+            document.getElementById('total-vol').innerText = '0 CBM';
+            document.getElementById('suggested-boxes').innerText = '0 Boxes';
+            document.getElementById('truck-recommendation').innerHTML = `<i class="fa-solid fa-truck-moving text-base"></i><span>Recommended Fleet: Standard 3-Ton Pickup Truck</span>`;
+        }
+
+        function trackMoveOrder() {
+            const input = document.getElementById('track-input').value.trim();
+            const resultBox = document.getElementById('track-result');
+            if (!input) return;
+
+            resultBox.classList.remove('hidden');
+        }
+
+        // ON DOM LOAD INITIALIZATION
+        window.onload = function() {
+            initParticles();
+            initCounters();
+            initTiltEffect();
+            initScrollReveal();
+        };
+
+        // CANVAS PARTICLES FX
+        let particlesEnabled = true;
+        let particles = [];
+        let canvas, ctx;
+
+        function initParticles() {
+            canvas = document.getElementById('particles-canvas');
+            if (!canvas) return;
+            ctx = canvas.getContext('2d');
+            resizeCanvas();
+
+            window.addEventListener('resize', resizeCanvas);
+
+            for(let i = 0; i < 30; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2 + 1,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    alpha: Math.random() * 0.4 + 0.1
+                });
+            }
+            animateParticles();
+        }
+
+        function resizeCanvas() {
+            if (!canvas) return;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function animateParticles() {
+            if (!particlesEnabled || !ctx) {
+                if(ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+                requestAnimationFrame(animateParticles);
+                return;
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#FFC247';
+
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.globalAlpha = p.alpha;
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animateParticles);
+        }
+
+        function toggleParticlesFX(enabled) {
+            particlesEnabled = enabled;
+        }
+
+        // TILT EFFECT
+        function initTiltEffect() {
+            const cards = document.querySelectorAll('.tilt-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    if (!document.getElementById('toggle-tilt').checked) return;
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    card.style.transform = `perspective(1000px) rotateX(${-y / 25}deg) rotateY(${x / 25}deg)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                });
+            });
+        }
+
+        // ANIMATED STAT COUNTERS
+        function initCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                const speed = target / 50;
+
+                const updateCount = () => {
+                    count += speed;
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count).toLocaleString() + (target === 99 ? '%' : '+');
+                        setTimeout(updateCount, 30);
+                    } else {
+                        counter.innerText = target.toLocaleString() + (target === 99 ? '%' : '+');
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        // SCROLL REVEAL
+        function initScrollReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            reveals.forEach(el => observer.observe(el));
+        }
+
+        // MOBILE MENU TOGGLE
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // DARK MODE TOGGLE
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        // FAQ ACCORDION TOGGLE
+        function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // CALCULATOR STEPPER LOGIC
+        function selectCalcOption(radio) {
+            basePrice = parseInt(radio.getAttribute('data-base'));
+            recalculatePrice();
+        }
+
+        function recalculatePrice() {
+            let total = basePrice;
+            if (document.getElementById('addon-bubble')?.checked) total += 150;
+            if (document.getElementById('addon-mount')?.checked) total += 100;
+            if (document.getElementById('addon-interemirate')?.checked) total += 300;
+
+            const maxTotal = total + 250;
+            const targetEl = document.getElementById('calculated-price');
+            if (targetEl) {
+                targetEl.innerText = `AED ${total} - ${maxTotal}`;
+            }
+        }
+
+        function goToStep(step) {
+            currentCalcStep = step;
+            document.getElementById('calc-step-1').classList.add('hidden');
+            document.getElementById('calc-step-2').classList.add('hidden');
+            document.getElementById('calc-step-3').classList.add('hidden');
+
+            document.getElementById(`calc-step-${step}`).classList.remove('hidden');
+
+            const bar = document.getElementById('progress-bar');
+            const label = document.getElementById('step-label');
+            const num = document.getElementById('step-num');
+
+            if (step === 1) {
+                bar.style.width = '33%';
+                label.innerText = 'Step 1: Select Property Size';
+                num.innerText = '33% Completed';
+            } else if (step === 2) {
+                bar.style.width = '66%';
+                label.innerText = 'Step 2: Add-on Services & Route';
+                num.innerText = '66% Completed';
+            } else {
+                bar.style.width = '100%';
+                label.innerText = 'Step 3: Confirm & WhatsApp';
+                num.innerText = '100% Completed';
+            }
+        }
+
+        function submitCalculator(e) {
+            e.preventDefault();
+            const size = document.querySelector('input[name="calc_size"]:checked').value;
+            const pickup = document.getElementById('calc-pickup').value;
+            const drop = document.getElementById('calc-drop').value;
+            const name = document.getElementById('calc-name').value;
+            const phone = document.getElementById('calc-phone').value;
+            const price = document.getElementById('calculated-price').innerText;
+
+            // Trigger Confetti
+            if (window.confetti) confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+
+            // Store Lead
+            leads.push({
+                type: `${size} Move: ${pickup} -> ${drop}`,
+                price: price,
+                customer: `${name} (${phone})`,
+                time: 'Just now'
+            });
+            renderLeads();
+
+            // WhatsApp Redirect
+            const msg = `Hello Zara Movers,%0A%0AI would like to book a move:%0A- Property: ${size}%0A- From: ${pickup}%0A- To: ${drop}%0A- Estimate: ${price}%0A- Name: ${name}%0A- Phone: ${phone}`;
+            window.open(`https://wa.me/971555609868?text=${msg}`, '_blank');
+        }
+
+        function handleHeroSubmit(e) {
+            e.preventDefault();
+            const type = document.getElementById('hero-move-type').value;
+            const pickup = document.getElementById('hero-pickup').value;
+            const drop = document.getElementById('hero-drop').value;
+            const phone = document.getElementById('hero-phone').value;
+
+            leads.push({
+                type: `Quick Quote (${type}): ${pickup} -> ${drop}`,
+                price: 'Custom Quote',
+                customer: `Phone: ${phone}`,
+                time: 'Just now'
+            });
+            renderLeads();
+
+            // Trigger Email Dispatch to zaramoovers1993@gmail.com
+            const subject = encodeURIComponent(`New Relocation Inquiry: ${type}`);
+            const body = encodeURIComponent(`Hello Zara Movers Team,\n\nA new moving lead was submitted via Hero Quick Form:\n\n- Move Type: ${type}\n- Pickup Location: ${pickup}\n- Drop Location: ${drop}\n- Customer Phone: ${phone}\n\nLocation Base: Mohamed Bin Zayed City Z9 01 Abu Dhabi`);
+            window.location.href = `mailto:zaramoovers1993@gmail.com?subject=${subject}&body=${body}`;
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const phone = document.getElementById('contact-phone').value;
+            const email = document.getElementById('contact-email').value;
+            const msg = document.getElementById('contact-message').value;
+
+            leads.push({
+                type: `Direct Contact Form Inquiry`,
+                price: 'Inquiry',
+                customer: `${name} (${phone})`,
+                time: 'Just now'
+            });
+            renderLeads();
+
+            // Direct Email Trigger
+            const subject = encodeURIComponent(`Direct Website Inquiry from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nUser Email: ${email}\n\nDetails:\n${msg}`);
+            window.location.href = `mailto:zaramoovers1993@gmail.com?subject=${subject}&body=${body}`;
+
+            alert('Thank you! Opening your email client to send your inquiry directly to zaramoovers1993@gmail.com');
+            e.target.reset();
+        }
+
+        // LIVE SITE CUSTOMIZER PANEL
+        function toggleCustomizer() {
+            const panel = document.getElementById('customizer-panel');
+            panel.classList.toggle('translate-x-full');
+        }
+
+        function updateLivePhone(val) {
+            document.querySelectorAll('.site-phone').forEach(el => el.innerText = val);
+        }
+
+        function updateLiveEmail(val) {
+            document.querySelectorAll('.site-email').forEach(el => el.innerText = val);
+        }
+
+        function updateLivePromo(val) {
+            const el = document.getElementById('editable-promo-text');
+            if(el) el.innerText = val;
+        }
+
+        function setThemeColor(colorHex) {
+            // Modify Tailwind inline CSS accent variables dynamically
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .bg-brand-yellow { background-color: ${colorHex} !important; }
+                .text-brand-yellow { color: ${colorHex} !important; }
+                .border-brand-yellow { border-color: ${colorHex} !important; }
+            `;
+            document.head.appendChild(style);
+        }
+
+        function resetCustomizer() {
+            updateLivePhone('+971 55 560 9868');
+            updateLiveEmail('zaramoovers1993@gmail.com');
+            updateLivePromo('Get 15% OFF Home Relocation in Abu Dhabi This Week! Use Code: ZARA2026');
+            setThemeColor('#FFC247');
+            
+            // Reset Button Labels
+            renameButtons('.btn-text-calc', 'Calculate Moving Cost');
+            renameButtons('.btn-text-hero', 'Request Free Quote Now');
+            renameButtons('.btn-text-wa', 'WhatsApp Quick Quote');
+            renameButtons('.btn-text-confirm', 'Confirm Booking via WhatsApp');
+            renameButtons('.btn-text-submit', 'Submit Direct Inquiry');
+        }
+
+        // ADMIN MODAL LOGIC
+        function openAdminModal() {
+            document.getElementById('admin-modal').classList.remove('hidden');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('admin-modal').classList.add('hidden');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const pass = document.getElementById('admin-pass').value;
+            if (pass === 'zaramovers123') {
+                document.getElementById('admin-login-view').classList.add('hidden');
+                document.getElementById('admin-dashboard-view').classList.remove('hidden');
+                renderLeads();
+            } else {
+                alert('Incorrect Admin Password! Try zaramovers123');
+            }
+        }
+
+        function logoutAdmin() {
+            document.getElementById('admin-login-view').classList.remove('hidden');
+            document.getElementById('admin-dashboard-view').classList.add('hidden');
+            document.getElementById('admin-pass').value = '';
+        }
+
+        function renderLeads() {
+            const container = document.getElementById('admin-leads-container');
+            if (!container) return;
+
+            if (leads.length === 0) {
+                container.innerHTML = `<div class="text-center py-6 text-xs text-slate-400">No new user inquiries captured yet. Try submitting the Cost Calculator or Hero Form!</div>`;
+                return;
+            }
+
+            container.innerHTML = leads.map(lead => `
+                <div class="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl border border-slate-200 dark:border-slate-600 text-xs space-y-1">
+                    <div class="flex justify-between font-bold text-brand-navy dark:text-white">
+                        <span>${lead.type}</span>
+                        <span class="text-emerald-500">${lead.price}</span>
+                    </div>
+                    <div class="text-slate-500">Customer: ${lead.customer}</div>
+                    <div class="text-[10px] text-slate-400">Received ${lead.time}</div>
+                </div>
+            `).join('');
+        }
+
+        function clearLeads() {
+            leads = [];
+            renderLeads();
+        }
+    </script>
+</body>
+</html>
